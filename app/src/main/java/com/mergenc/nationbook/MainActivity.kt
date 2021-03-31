@@ -34,5 +34,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-// 29 march 2021, 9.00 a.m to 3.50 p.m.: 361. Menu eklemek
-// 30 march 2021, 4.00 p.m to
+// 29 march 2021, 9.00 a.m. to 3.50 p.m.: 361. Menu eklemek
+// 30 march 2021, 4.00 p.m. to 9.00 p.m.:
+// 31 march 2021, 2.00 p.m. to

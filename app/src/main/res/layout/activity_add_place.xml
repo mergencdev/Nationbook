@@ -35,7 +35,7 @@
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editPlaceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -46,7 +46,7 @@
             tools:layout_editor_absoluteY="392dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -57,7 +57,7 @@
             tools:layout_editor_absoluteY="324dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/editDescription"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginTop="15dp"

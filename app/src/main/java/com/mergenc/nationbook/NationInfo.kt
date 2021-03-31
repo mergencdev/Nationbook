@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_nation_info.*
+import java.lang.Exception
 
 class NationInfo : AppCompatActivity() {
     var selectedCountry: Uri? = null
@@ -19,21 +20,46 @@ class NationInfo : AppCompatActivity() {
         setContentView(R.layout.activity_nation_info)
 
         val intent = intent
-        val placeNameList = ArrayList<String>()
+        val placeNameListTR = ArrayList<String>()
+        val placeIDListTR = ArrayList<Int>()
 
         // simple_list_item_1 listView;
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, placeNameList)
-        listView.adapter = arrayAdapter
+        val arrayAdapterTR =
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, placeNameListTR)
+        listView.adapter = arrayAdapterTR
+
+        val placeNameListAU = ArrayList<String>()
+        val placeIDListAU = ArrayList<Int>()
 
         // getting "country name" from MainActivity.;
         val countryInfo = intent.getStringExtra("country name")
         textView.text = countryInfo
+        val intentForInfo = Intent(this, AddPlaceActivity::class.java)
+        intentForInfo.putExtra("country name info", countryInfo)
 
 
         // Getting "country flag" (drawable) from MainActivity.;
         // this method's src: https://stackoverflow.com/questions/8407336/how-to-pass-drawable-between-activities
         val flag = resources.getDrawable(intent.getIntExtra("country flag", -1))
         imageView7.setImageDrawable(flag)
+
+        try {
+            val database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null)
+            val cursor = database.rawQuery("SELECT * FROM placesTR", null)
+            val placeNameIndexTR = cursor.getColumnIndex("placenameTR")
+            val IDIndexTR = cursor.getColumnIndex("idTR")
+
+            while (cursor.moveToNext()) {
+                placeNameListTR.add(cursor.getString(placeNameIndexTR))
+                placeIDListTR.add(cursor.getInt(IDIndexTR))
+            }
+
+            arrayAdapterTR.notifyDataSetChanged() // ??
+            cursor.close()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
