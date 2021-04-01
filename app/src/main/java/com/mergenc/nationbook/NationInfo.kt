@@ -24,9 +24,9 @@ class NationInfo : AppCompatActivity() {
         val placeIDListTR = ArrayList<Int>()
 
         // simple_list_item_1 listView;
-        val arrayAdapterTR =
+        val arrayAdapter =
             ArrayAdapter(this, android.R.layout.simple_list_item_1, placeNameListTR)
-        listView.adapter = arrayAdapterTR
+        listView.adapter = arrayAdapter
 
         val placeNameListAU = ArrayList<String>()
         val placeIDListAU = ArrayList<Int>()
@@ -54,7 +54,7 @@ class NationInfo : AppCompatActivity() {
                 placeIDListTR.add(cursor.getInt(IDIndexTR))
             }
 
-            arrayAdapterTR.notifyDataSetChanged() // ??
+            arrayAdapter.notifyDataSetChanged() // ??
             cursor.close()
 
         } catch (e: Exception) {

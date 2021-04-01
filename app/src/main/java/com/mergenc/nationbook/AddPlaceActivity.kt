@@ -36,6 +36,7 @@ class AddPlaceActivity : AppCompatActivity() {
     fun save(view: View) {
         val intentForInfo = intent
         val countryName = intentForInfo.getStringExtra("country name info")
+
         val placeName = editPlaceName.text.toString()
         val location = editLocation.text.toString()
         val description = editDescription.text.toString()
